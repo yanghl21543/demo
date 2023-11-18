@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件体系结构教学软件</title>
+    <style>
+        /* Add your styles here */
+    </style>
+</head>
+<body>
+    <h1>软件体系结构教学软件</h1>
+    
+    <form id="learningForm">
+        <label>选择学习内容：</label>
+        <select id="learningContent" onchange="updateLearningMaterial()">
+            <option value="mainProgramSubProgram">主程序-子程序</option>
+            <option value="objectOriented">面向对象</option>
+            <option value="eventSystem">事件系统</option>
+            <option value="pipeFilter">管道-过滤器</option>
+        </select>
+    </form>
+
+    <div id="learningMaterial">
+        <!-- 根据用户选择显示相应的学习材料 -->
+        <h2 id="materialTitle">主程序-子程序</h2>
+
+        <img id="materialImage" src="" alt="Material Image">
+    
+        <pre id="materialCode">
+            <!-- 主程序-子程序的示例代码 -->
+        </pre>
+    </div>
+
+    <script>
+        function updateLearningMaterial() {
+            // 获取用户选择的学习内容
+            const selectedContent = document.getElementById("learningContent").value;
+
+            // 根据选择更新学习材料的标题、图片和代码
+            const materialTitle = document.getElementById("materialTitle");
+            const materialImage = document.getElementById("materialImage");
+            const materialCode = document.getElementById("materialCode");
+
+            // 设置基础路径
+            const basePath = "C:/Users/10243/Desktop/ceshi1/";
+
+            
+      
+            switch (selectedContent) {
+            case "mainProgramSubProgram":
+                materialTitle.innerText = "主程序-子程序";
+                materialImage.src = basePath + "output1.png";
+                fetch(basePath + "demo1.txt")  // 使用 demo1.txt
+                    .then(response => response.text())
+                    .then(code => {
+                        materialCode.innerText = code;
+                    });
+                break;
+
+            case "objectOriented":
+                materialTitle.innerText = "面向对象";
+                materialImage.src = basePath + "output2.jpg";
+                fetch(basePath + "demo2.txt")  
+                    .then(response => response.text())
+                    .then(code => {
+                        materialCode.innerText = code;
+                    });
+                break;
+
+            // 添加其他学习内容的情况
+
+            default:
+                // 默认情况
+                materialTitle.innerText = "主程序-子程序";
+                materialImage.src = basePath + "output1.jpg";
+                fetch(basePath + "demo1.txt")  // 修改文件名为 demo1.txt
+                    .then(response => response.text())
+                    .then(code => {
+                        materialCode.innerText = code;
+                    });
+                break;
+        }
+    }
+
+    // 初始加载学习材料
+    updateLearningMaterial();
+</script>
+</body>
+</html>
