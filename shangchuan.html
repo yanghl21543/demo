@@ -67,12 +67,29 @@
                         materialCode.innerText = code;
                     });
                 break;
+            case "eventSystem":
+                materialTitle.innerText = "事件系统";
+                materialImage.src = basePath + "output3.jpg";
+                fetch(basePath + "demo3.txt")  
+                    .then(response => response.text())
+                    .then(code => {
+                        materialCode.innerText = code;
+                    });
+                break;
+              case "objectOriented":
+                materialTitle.innerText = "管道-过滤器";
+                materialImage.src = basePath + "output4.jpg";
+                fetch(basePath + "demo4.txt")  
+                    .then(response => response.text())
+                    .then(code => {
+                        materialCode.innerText = code;
+                    });
+                break;
 
-            // 添加其他学习内容的情况
-
+            
             default:
                 // 默认情况
-                materialTitle.innerText = "主程序-子程序";
+                materialTitle.innerText = "面向对象";
                 materialImage.src = basePath + "output1.jpg";
                 fetch(basePath + "demo1.txt")  // 修改文件名为 demo1.txt
                     .then(response => response.text())
